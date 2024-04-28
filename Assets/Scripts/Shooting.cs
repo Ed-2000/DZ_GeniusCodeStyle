@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
-    [SerializeField] private GameObject _bullet;
+    [SerializeField] private Bullet _bullet;
     [SerializeField] private Transform _target;
     [SerializeField] private float _bulletSpeed;
     [SerializeField] private float _waitingTimeBetweenShots;
@@ -21,9 +21,9 @@ public class Shooting : MonoBehaviour
         while (isWork)
         {
             Vector3 direction = (_target.position - transform.position).normalized;
-            GameObject newBullet = Instantiate(_bullet, transform.position, Quaternion.identity);
+            Bullet newBullet = Instantiate(_bullet, transform.position, Quaternion.identity);
 
-            Rigidbody bulletRigidbody = newBullet.GetComponent<Rigidbody>();
+            Rigidbody bulletRigidbody = newBullet.Rigidbody;
             bulletRigidbody.transform.up = direction;
             bulletRigidbody.velocity = direction * _bulletSpeed;
 
